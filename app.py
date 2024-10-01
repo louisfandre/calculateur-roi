@@ -6,7 +6,8 @@ app = Flask(__name__)
 def roi_form():
     if request.method == 'POST':
         # Récupération des données du formulaire
-        name = request.form['name']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
         company = request.form['company']
         email = request.form['email']
         phone = request.form['phone']
@@ -51,7 +52,8 @@ def roi_form():
 
         # Préparer les données pour l'affichage
         result_data = {
-            'name': name,
+            'first_name': first_name,
+            'last_name': last_name,
             'company': company,
             'additional_revenue_retention': additional_revenue_retention,
             'additional_revenue_acquisition': additional_revenue_acquisition,
