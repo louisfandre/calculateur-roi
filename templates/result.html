@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats du ROI</title>
+    <!-- Inclure le CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Votre fichier CSS personnalisé -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Résultats du Calcul du ROI pour {{ data['company'] }}</h1>
+        <p>Bonjour {{ data['name'] }}, voici les résultats de votre calcul :</p>
+
+        <h2>Revenus supplémentaires</h2>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                Amélioration de la rétention : <strong>{{ data['additional_revenue_retention'] | round(2) }} €</strong>
+            </li>
+            <li class="list-group-item">
+                Acquisition de nouveaux clients : <strong>{{ data['additional_revenue_acquisition'] | round(2) }} €</strong>
+            </li>
+        </ul>
+
+        <h2>Économies réalisées</h2>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                Réduction des coûts liés aux plaintes : <strong>{{ data['cost_savings_complaints'] | round(2) }} €</strong>
+            </li>
+            <li class="list-group-item">
+                Réduction des coûts grâce à un meilleur FCR : <strong>{{ data['cost_savings_fcr'] | round(2) }} €</strong>
+            </li>
+        </ul>
+
+        <h2>Calcul final du ROI</h2>
+        <p>Total des bénéfices générés : <strong>{{ data['total_benefits'] | round(2) }} €</strong></p>
+        <p>Budget actuel consacré à l'amélioration de l'expérience client : <strong>{{ data['current_budget'] | round(2) }} €</strong></p>
+        <p><strong>ROI estimé :</strong> <span class="text-success">{{ data['roi'] | round(2) }} %</span></p>
+
+        <p class="mt-4">Merci d'avoir utilisé notre calculateur de ROI !</p>
+    </div>
+
+    <!-- Inclure jQuery, Popper.js et le JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

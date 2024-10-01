@@ -1,0 +1,143 @@
+/* Styles généraux */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+}
+
+form {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"] {
+    margin-right: 10px;
+}
+
+.step {
+    display: none;
+}
+
+/* Barre de progression */
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 5px;
+    width: 0%;
+}
+
+/* Styles pour les valeurs des sliders */
+.slider-value {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Page de résultats */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #e9ecef;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+p {
+    margin: 20px 0;
+    color: #333;
+}
+
+strong {
+    font-size: 1.2em;
+}
+
+/* Styles personnalisés */
+
+body {
+    background-color: #f8f9fa; /* Couleur de fond claire */
+}
+
+h1 {
+    color: #343a40; /* Couleur du titre */
+}
+
+p {
+    color: #343a40;
+}
+
+.progress {
+    height: 20px; /* Augmenter la hauteur de la barre de progression */
+}
+
+.progress-bar {
+    background-color: #28a745; /* Couleur verte pour la barre de progression */
+}
+
+.step {
+    display: none;
+}
+
+.slider-value {
+    font-weight: bold;
+    color: #007bff;
+}

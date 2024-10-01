@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculateur de ROI</title>
+    <!-- Inclure le CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Votre fichier CSS personnalisé -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Calculateur de ROI</h1>
+        <!-- Barre de progression -->
+        <div class="progress mb-4">
+            <div class="progress-bar" id="progress" style="width: 0%;"></div>
+        </div>
+        <form id="roiForm" method="post">
+            <!-- Étape 1 : Informations personnelles -->
+            <div class="step">
+                <div class="form-group">
+                    <label for="name">Nom et Prénom :</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Nom de la Société :</label>
+                    <input type="text" class="form-control" id="company" name="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Numéro de Téléphone :</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+                </div>
+            </div>
+
+            <!-- Étape 2 : Informations sur l'entreprise -->
+            <div class="step" style="display:none;">
+                <div class="form-group">
+                    <label for="num_clients">Nombre moyen de clients actifs par mois :</label>
+                    <input type="number" class="form-control" id="num_clients" name="num_clients" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="clv">Valeur moyenne par client (CLV) :</label>
+                    <input type="number" class="form-control" id="clv" name="clv" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="retention_rate">Taux de rétention actuel (<span id="retention_rate_value">50</span>%):</label>
+                    <input type="range" class="custom-range" id="retention_rate" name="retention_rate" min="0" max="100" value="50" required oninput="updateSliderValue('retention_rate')">
+                </div>
+
+                <div class="form-group">
+                    <label for="conversion_rate">Taux de conversion des nouveaux leads en clients (<span id="conversion_rate_value">10</span>%):</label>
+                    <input type="range" class="custom-range" id="conversion_rate" name="conversion_rate" min="0" max="100" value="10" required oninput="updateSliderValue('conversion_rate')">
+                </div>
+
+                <div class="form-group">
+                    <label for="current_budget">Budget actuel consacré à l'amélioration de l'expérience client (€/an) :</label>
+                    <input type="number" class="form-control" id="current_budget" name="current_budget" required>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Suivant</button>
+                </div>
+            </div>
+
+            <!-- Étape 3 : Questions sur la performance CX actuelle -->
+            <div class="step" style="display:none;">
+                <div class="form-group">
+                    <label for="csat_score">Taux de satisfaction actuel des clients (sur 10) :</label>
+                    <input type="number" class="form-control" id="csat_score" name="csat_score" step="0.1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_complaints">Nombre moyen de plaintes par mois :</label>
+                    <input type="number" class="form-control" id="num_complaints" name="num_complaints" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="response_time">Temps moyen de réponse au service client (en heures) :</label>
+                    <input type="number" class="form-control" id="response_time" name="response_time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fcr_rate">Pourcentage de plaintes résolues au premier contact (<span id="fcr_rate_value">60</span>%):</label>
+                    <input type="range" class="custom-range" id="fcr_rate" name="fcr_rate" min="0" max="100" value="60" required oninput="updateSliderValue('fcr_rate')">
+                </div>
+
+                <div class="form-group">
+                    <label for="churn_rate">Taux d'abandon de panier ou de résiliation des contrats (<span id="churn_rate_value">15</span>%):</label>
+                    <input type="range" class="custom-range" id="churn_rate" name="churn_rate" min="0" max="100" value="15" required oninput="updateSliderValue('churn_rate')">
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Précédent</button>
+                    <button type="submit" class="btn btn-success">Calculer le ROI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Inclure jQuery, Popper.js et le JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Inclure votre fichier JavaScript personnalisé -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
